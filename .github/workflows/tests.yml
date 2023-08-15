@@ -1,0 +1,25 @@
+name: Testes Automatizados CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v2
+      
+      - name: Configurar o Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.4
+      - name: Executar testes unitarios
+        run: |
+          python -m pytest tests/
+
+
+
